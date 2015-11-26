@@ -148,12 +148,4 @@
               %td.other.right= link_to "...", @other_right_link, class: 'pjax'
             %td.last.links
               %ul.inline.list-inline= menu_for :member, @abstract_model, object, true
-    - if @objects.respond_to?(:total_count)
-      - total_count = @objects.total_count.to_i
-      .row
-        .col-md-6= paginate(@objects, theme: 'twitter-bootstrap', remote: true)
-      .row
-        .col-md-6= link_to(t("admin.misc.show_all"), index_path(params.merge(all: true)), class: "show-all btn btn-default clearfix pjax") unless total_count > 100 || total_count <= @objects.to_a.size
-      .clearfix.total-count= "#{total_count} #{@model_config.pluralize(total_count).downcase}"
-    - else
-      .clearfix.total-count= "#{@objects.size} #{@model_config.pluralize(@objects.size).downcase}"
+    %strong ページネーションは負荷軽減のため利用できません。件数が多い場合は適切なフィルタリングを行ってください
